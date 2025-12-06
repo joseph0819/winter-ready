@@ -1,108 +1,71 @@
-<footer>
-    <div class="footer-container">
+<script>
+    export let year = new Date().getFullYear();
+  </script>
   
-      <!-- LEFT: BRAND -->
-      <div class="footer-brand">
-        ❄️ <span>WinterReady</span>
-        <p>Your campus guide to winter essentials & safety.</p>
-      </div>
-  
-      <!-- CENTER: LINKS -->
-      <div class="footer-links">
-        <a on:click={() => currentPage = "home"}>Home</a>
-        <a on:click={() => currentPage = "about"}>About</a>
-        <a href="https://www.uc.edu/campus-life/dean-of-students/bearcat-pantry.html" 
-           target="_blank">
-           Bearcats Pantry
-        </a>
-      </div>
-  
-      <!-- RIGHT: SUPPORT INFO -->
-      <div class="footer-info">
-        <p>Need help?</p>
-        <p>Email: <a href="mailto:help@winterready.com">help@winterready.com</a></p>
-        <p>Location: Stratford Heights Pavilion</p>
-      </div>
-  
+  <footer class="footer">
+    <div class="footer-left">
+      <h3>Bearcats Winter Support</h3>
+      <p>Helping UC students access essential winter gear & supplies when they need it most.</p>
     </div>
   
-    <div class="bottom-bar">
-      © {new Date().getFullYear()} WinterReady. All rights reserved.
+    <div class="footer-right">
+      <a href="mailto:support@bearcatshelp.org">Support</a>
+      <a href="#">Privacy</a>
+      <a href="#">About</a>
+    </div>
+  
+    <div class="footer-bottom">
+      © {year} Bearcats Winter Support • University of Cincinnati
     </div>
   </footer>
   
   <style>
-    footer {
-      background: #FAFAFA;
-      border-top: 1px solid #E5E7EB;
-      padding-top: 30px;
+    .footer {
+      width: 100%;
+      background: #f5f5f5;
+      padding: 20px 30px;
+      border-top: 1px solid #e2e2e2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       font-family: Inter, sans-serif;
     }
   
-    /* FULL FOOTER GRID */
-    .footer-container {
-      max-width: 1300px;
-      margin: auto;
-      padding: 0 40px 20px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
-    }
-  
-    /* BRAND */
-    .footer-brand span {
+    .footer-left h3 {
+      margin: 0;
+      font-size: 18px;
       font-weight: 700;
-      font-size: 20px;
-      margin-left: 6px;
+      color: #222;
     }
   
-    .footer-brand p {
-      margin-top: 6px;
-      color: #6B7280;
+    .footer-left p {
+      margin: 4px 0 0;
       font-size: 14px;
-      max-width: 250px;
+      max-width: 400px;
+      color: #555;
+      line-height: 1.4;
     }
   
-    /* LINKS */
-    .footer-links {
+    .footer-right {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .footer-links a {
-      color: #374151;
-      font-size: 15px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-  
-    .footer-links a:hover {
-      color: #4CAF50;
-    }
-  
-    /* RIGHT INFO */
-    .footer-info p {
-      margin: 4px 0;
-      color: #4B5563;
+      gap: 20px;
       font-size: 14px;
     }
   
-    .footer-info a {
+    .footer-right a {
       color: #2563EB;
       text-decoration: none;
+      font-weight: 500;
     }
   
-    /* BOTTOM COPYRIGHT BAR */
-    .bottom-bar {
-      text-align: center;
-      padding: 12px;
-      font-size: 13px;
-      color: #6B7280;
-      border-top: 1px solid #E5E7EB;
-      background: #F9FAFB;
-      margin-top: 10px;
+    .footer-right a:hover {
+      text-decoration: underline;
+    }
+  
+    .footer-bottom {
+      font-size: 12px;
+      color: #777;
+      margin-top: 6px;
     }
   </style>
   
