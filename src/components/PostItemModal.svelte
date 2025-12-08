@@ -77,10 +77,6 @@
     <input type="number" min="1" bind:value={quantity} />
   </div>
 
-  <div class="field">
-    <label>Description (optional)</label>
-    <textarea bind:value={description} placeholder="Add notes..."></textarea>
-  </div>
 
   <div class="actions">
     <button class="cancel" on:click={close}>Cancel</button>
@@ -131,7 +127,7 @@
     margin-bottom: 16px;
   }
 
-  select, input, textarea {
+  select, input {
     padding: 10px;
     border-radius: 10px;
     background: #F9FAFB;

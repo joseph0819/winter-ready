@@ -1,114 +1,70 @@
+<script>
+  export let year = new Date().getFullYear();
+</script>
+
 <footer class="footer">
-    <div class="container">
-  
-      <!-- LEFT: BRAND -->
-      <div class="brand">
-        <div class="brand-title">
-          ❄️ WinterReady
-        </div>
-        <p class="brand-text">
-          Helping UC students stay warm, safe, and supported during the winter season.
-        </p>
-      </div>
-  
-      <!-- CENTER: QUICK LINKS -->
-      <div class="links">
-        <h4>Navigate</h4>
-        <a on:click={() => currentPage = "home"}>Home</a>
-        <a on:click={() => currentPage = "about"}>About</a>
-        <a href="https://www.uc.edu/campus-life/dean-of-students/bearcat-pantry.html" target="_blank">
-          Bearcats Pantry
-        </a>
-      </div>
-  
-      <!-- RIGHT: CONTACT -->
-      <div class="contact">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:help@winterready.com">help@winterready.com</a></p>
-        <p>Location: Stratford Heights Pavilion</p>
-        <p>Hours: Mon–Fri · 10AM–4PM</p>
-      </div>
-  
-    </div>
-  
-    <div class="bottom-bar">
-      © {new Date().getFullYear()} WinterReady · Built for UC Students
-    </div>
-  </footer>
-  
-  <style>
-    .footer {
-      background: #F8FAFC;
-      border-top: 1px solid #E2E8F0;
-      margin-top: 10px;
-      font-family: Inter, sans-serif;
-    }
-  
-    .container {
-      max-width: 1300px;
-      margin: auto;
-      padding: 25px 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
-    }
-  
-    /* BRAND SECTION */
-    .brand-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-  
-    .brand-text {
-      font-size: 14px;
-      color: #475569;
-      max-width: 260px;
-      margin-top: 4px;
-    }
-  
-    /* LINKS */
-    .links h4,
-    .contact h4 {
-      margin: 0 0 12px 0;
-      font-size: 15px;
-      font-weight: 600;
-    }
-  
-    .links a {
-      display: block;
-      font-size: 14px;
-      color: #475569;
-      text-decoration: none;
-      margin-bottom: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-  
-    .links a:hover {
-      color: #4CAF50;
-    }
-  
-    /* CONTACT */
-    .contact p {
-      margin: 4px 0;
-      font-size: 14px;
-      color: #475569;
-    }
-  
-    .contact a {
-      color: #2563EB;
-      text-decoration: none;
-    }
-  
-    /* COPYRIGHT BAR */
-    .bottom-bar {
-      text-align: center;
-      padding: 14px;
-      font-size: 13px;
-      background: #F1F5F9;
-      color: #64748B;
-      border-top: 1px solid #E2E8F0;
-    }
-  </style>
-  
+  <div class="footer-left">
+    <h3>Bearcats Winter Support</h3>
+    <p>Helping UC students access essential winter gear & supplies when they need it most.</p>
+  </div>
+
+  <div class="footer-right">
+    <a href="mailto:support@bearcatshelp.org">Support</a>
+    <a href="#">Privacy</a>
+    <a href="#">About</a>
+  </div>
+
+  <div class="footer-bottom">
+    © {year} Bearcats Winter Support • University of Cincinnati
+  </div>
+</footer>
+
+<style>
+  .footer {
+    width: 100%;
+    background: #f5f5f5;
+    padding: 20px 30px;
+    border-top: 1px solid #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: Inter, sans-serif;
+  }
+
+  .footer-left h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .footer-left p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    max-width: 400px;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+  }
+
+  .footer-right a {
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-right a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    color: #777;
+    margin-top: 6px;
+  }
+</style>
