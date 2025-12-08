@@ -72,7 +72,7 @@
     .contact h4 {
       margin: 0 0 12px 0;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 600;
     }
   
     .links a {
