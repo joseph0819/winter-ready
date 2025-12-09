@@ -1,11 +1,10 @@
 <script>
-    // no logic needed
+    // No logic needed
   </script>
   
- 
   <div class="page-wrapper">
-  
     <div class="about-content">
+  
       <h1>About WinterReady UC</h1>
   
       <p class="intro">
@@ -27,12 +26,13 @@
         </p>
       </div>
   
+      <!-- GRID OF FEATURE CARDS -->
       <div class="section grid">
         <div class="card">
           <div class="icon">🥾</div>
           <h3>Winter Boots</h3>
           <p>
-            Durable insulated boots ideal for snow, rain, and long walks between 
+            Durable insulated boots ideal for snow, slush, and long walks between 
             campus buildings.
           </p>
         </div>
@@ -41,8 +41,8 @@
           <div class="icon">🧥</div>
           <h3>Warm Jackets</h3>
           <p>
-            Heavy thermal jackets that protect against freezing temperatures 
-            and strong winds.
+            Heavy thermal jackets that protect against freezing temperatures and 
+            strong winds.
           </p>
         </div>
   
@@ -50,8 +50,17 @@
           <div class="icon">🧣</div>
           <h3>Accessories</h3>
           <p>
-            Scarves, gloves, and other essentials to help you stay warm 
+            Gloves, scarves, hats, and other essential items to help you stay warm 
             throughout winter.
+          </p>
+        </div>
+  
+        <div class="card">
+          <div class="icon">🛏️</div>
+          <h3>Blankets</h3>
+          <p>
+            Thick and cozy fleece blankets that help students stay warm during 
+            freezing nights — especially in drafty dorms or apartments.
           </p>
         </div>
   
@@ -59,8 +68,8 @@
           <div class="icon">🥫</div>
           <h3>Food Packs</h3>
           <p>
-            Pantry bundles containing soup, noodles, snacks, protein sources, 
-            and other essentials.
+            Pantry bundles containing soup, noodles, snacks, protein sources, and 
+            other essentials.
           </p>
         </div>
       </div>
@@ -69,29 +78,34 @@
         <h2>How It Works</h2>
         <ul>
           <li><b>Browse Items:</b> View all available winter and food supplies.</li>
-          <li><b>Check Quantities:</b> See live inventory numbers.</li>
+          <li><b>Check Quantities:</b> See accurate live inventory numbers.</li>
           <li><b>Get Directions:</b> Navigate easily to the Bearcats Pantry.</li>
-          <li><b>Pick Up:</b> Collect what you need — quick and stress-free.</li>
+          <li><b>Pick Up:</b> Collect what you need — fast and stress-free.</li>
         </ul>
       </div>
   
       <div class="footer-note">
-        WinterReady UC exists to make sure every Bearcat feels safe, warm, and 
-        supported during the winter season.
+        WinterReady UC exists to make sure every Bearcat feels safe, warm, and supported 
+        during the winter season.  
+      
+        
       </div>
+  
     </div>
   </div>
   
   <style>
-    /* MATCHES HOME PAGE SPACING */
+    
     .page-wrapper {
       width: 100%;
       display: flex;
       justify-content: center;
-     
+      overflow-y: auto;     
+   
+      margin-bottom: 20px;
     }
   
-    /* MATCH HOME MAX-WIDTH & PADDING WITHOUT SHRINKING THE NAV */
+   
     .about-content {
       width: 100%;
       max-width: 900px;
@@ -122,6 +136,7 @@
       margin-bottom: 10px;
     }
   
+    /* GRID FOR INFO CARDS */
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -134,7 +149,7 @@
       border-radius: 14px;
       border: 1px solid #E5E7EB;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: 0.2s;
+      transition: 0.2s ease;
     }
   
     .card:hover {
@@ -168,6 +183,7 @@
       border-radius: 12px;
       border-left: 4px solid #4CAF50;
       line-height: 1.6;
+      
     }
   </style>
   
