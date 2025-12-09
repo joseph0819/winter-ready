@@ -2,11 +2,11 @@
     import { itemList, activeFilter, focusCoords, MAIN_LOCATION, selectedItem } from "../stores/itemStore.js";
   
     let isOpen = {
-      Boots: true,
-      Jackets: true,
-      Accessories: true,
-      Blankets: true,
-      "Food Packs": true
+      Boots: false,
+      Jackets: false,
+      Accessories: false,
+      Blankets: false,
+      "Food Packs": false
     };
   
     function toggle(category) {
