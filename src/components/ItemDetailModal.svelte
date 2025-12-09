@@ -1,6 +1,7 @@
 <script>
-    import { selectedItem, focusCoords, MAIN_LOCATION } from "../stores/itemStore.js";
-  
+    import { selectedItem, itemList, focusCoords, MAIN_LOCATION } from "../stores/itemStore.js";
+    import { showToast } from "../stores/toastStore.js";
+
     function closeModal() {
       selectedItem.set(null);
     }
@@ -12,60 +13,100 @@
   
     function openGoogleMaps() {
       const [lat, lng] = MAIN_LOCATION.coords;
-      window.open(
-        `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
-        "_blank"
-      );
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, "_blank");
     }
+  
+    function claimItem(item) {
+  itemList.update(list => {
+    return list.map(i => {
+      if (i.id === item.id && i.quantity > 0) {
+        return { ...i, quantity: i.quantity - 1 };
+      }
+      return i;
+    });
+  });
+
+  showToast("Item claimed successfully!", "success");
+
+  if (item.quantity - 1 <= 0) {
+    showToast("This item is now out of stock.", "info");
+    selectedItem.set(null);
+  } else {
+    selectedItem.set({ ...item, quantity: item.quantity - 1 });
+  }
+}
+
   </script>
   
   {#if $selectedItem}
   <div class="overlay" on:click={closeModal}>
     <div class="modal" on:click|stopPropagation>
-      
+  
       <!-- CLOSE BUTTON -->
       <button class="close-btn" on:click={closeModal}>✕</button>
   
-      <!-- ICON + TITLE -->
+      <!-- HEADER -->
       <div class="header">
         <div class="icon">{$selectedItem.icon}</div>
         <h2>{$selectedItem.title}</h2>
       </div>
   
-      <!-- DESCRIPTION -->
-      <p class="description">
-        {$selectedItem.description}
-      </p>
+      <!-- LOW STOCK WARNING -->
+      {#if $selectedItem.quantity < 10}
+        <div class="warning">⚠️ Low Supply — only {$selectedItem.quantity} left!</div>
+      {/if}
   
-      <!-- QUANTITY -->
-      <div class="quantity-box">
-        <span class="label">Available:</span>
-        <span class="qty">{$selectedItem.quantity}</span>
-      </div>
+      <!-- STRUCTURED DETAILS -->
+      <div class="details">
   
-      <!-- LOCATION -->
-      <div class="location-box">
-        <span class="label">Location:</span>
-        <span>Bearcats Pantry – Stratford Ave</span>
+        <p><span class="label">Category:</span> {$selectedItem.category}</p>
+  
+        {#if $selectedItem.gender}
+          <p><span class="label">Gender:</span> {$selectedItem.gender}</p>
+        {/if}
+  
+        {#if $selectedItem.size}
+          <p><span class="label">Size:</span> {$selectedItem.size}</p>
+        {/if}
+  
+        <p><span class="label">Available:</span> {$selectedItem.quantity}</p>
+  
+        <p>
+          <span class="label">Location:</span>  
+          Bearcats Pantry – Stratford Heights Pavilion
+        </p>
+  
+        <p>
+          <span class="label">Pickup Hours:</span>  
+          Mon–Fri, 10AM–4PM
+        </p>
       </div>
   
       <!-- ACTION BUTTONS -->
       <div class="actions">
         <button class="map-btn" on:click={centerOnMap}>📍 Show on Map</button>
-        <button class="directions-btn" on:click={openGoogleMaps}>🧭 Get Directions</button>
+        <button class="directions-btn" on:click={openGoogleMaps}>🧭 Directions</button>
       </div>
+  
+      <!-- CLAIM ITEM BUTTON -->
+      <button 
+        class="claim-btn"
+        on:click={() => claimItem($selectedItem)}
+        disabled={$selectedItem.quantity === 0}
+      >
+        🎁 Claim Item
+      </button>
   
     </div>
   </div>
   {/if}
   
   <style>
-    /* FULL SCREEN GLASS OVERLAY */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -73,7 +114,6 @@
       animation: fadeIn 0.2s ease-out;
     }
   
-    /* MODAL CARD */
     .modal {
       width: 420px;
       background: #fff;
@@ -81,10 +121,9 @@
       padding: 28px;
       position: relative;
       animation: slideUp 0.25s ease-out;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.17);
     }
   
-    /* CLOSE BUTTON */
     .close-btn {
       position: absolute;
       top: 14px;
@@ -95,16 +134,15 @@
       cursor: pointer;
     }
   
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
   
     .icon {
-      font-size: 32px;
+      font-size: 36px;
     }
   
     h2 {
@@ -113,34 +151,33 @@
       font-weight: 700;
     }
   
-    .description {
-      margin: 10px 0 18px;
-      color: #444;
-      line-height: 1.4;
+    /* WARNING */
+    .warning {
+      background: #FEE2E2;
+      color: #B91C1C;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: 600;
     }
   
-    /* QUANTITY BOX */
-    .quantity-box,
-    .location-box {
-      margin-bottom: 14px;
+    /* DETAILS */
+    .details {
       font-size: 15px;
+      margin-bottom: 20px;
     }
   
     .label {
-      font-weight: 600;
-      margin-right: 6px;
-    }
-  
-    .qty {
-      color: #2563EB;
       font-weight: 700;
+      color: #374151;
     }
   
-    /* ACTION BUTTONS */
     .actions {
       display: flex;
       gap: 14px;
-      margin-top: 20px;
+      margin-bottom: 16px;
     }
   
     .map-btn,
@@ -170,6 +207,29 @@
   
     .directions-btn:hover {
       background: #2f3743;
+    }
+  
+    /* CLAIM BUTTON */
+    .claim-btn {
+      width: 100%;
+      padding: 12px;
+      background: #10B981;
+      color: white;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+  
+    .claim-btn:hover {
+      background: #0e9e70;
+    }
+  
+    .claim-btn:disabled {
+      background: #D1D5DB;
+      cursor: not-allowed;
     }
   
     /* ANIMATIONS */
