@@ -1,5 +1,5 @@
 <script>
-    // No logic needed
+   
   </script>
   
   <div class="page-wrapper">
@@ -21,7 +21,7 @@
           Cincinnati winters can be tough, especially for students unfamiliar with 
           freezing temperatures, snow, and icy sidewalks. Winter clothing can also 
           be expensive. WinterReady UC helps reduce that burden by clearly showing 
-          what items are currently available — jackets, boots, scarves, gloves, 
+          what items are currently available like jackets, boots, scarves, gloves, 
           blankets, and food packs.
         </p>
       </div>
