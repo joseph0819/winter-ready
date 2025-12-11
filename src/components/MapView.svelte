@@ -9,7 +9,6 @@
     let userMarker = null;
     let routeControl = null;
   
-    // Popup content (no image)
     function generatePopupHTML(items) {
       let html = `
         <b>Bearcats Pantry – Stratford Ave</b><br/>
@@ -40,7 +39,7 @@
       return html;
     }
   
-    // Draw route user → pantry
+    // Draw route user to pantry
     function drawRoute(userPos) {
       if (routeControl) routeControl.remove();
   
@@ -106,9 +105,9 @@
     });
   </script>
   
-  <!-- MAP WRAPPER -->
+
   <div class="map-wrapper">
-    <!-- MAP -->
+   
     <div id="map"></div>
   
     <!-- SHOW MY LOCATION button INSIDE MAP -->
@@ -118,7 +117,7 @@
   </div>
   
   <style>
-    /* Wrapper ensures button is on the map */
+   
     .map-wrapper {
       position: relative;
       width: 100%;
@@ -130,7 +129,7 @@
       height: 100%;
     }
   
-    /* Button correctly positioned ON TOP OF MAP */
+   
     .map-button {
       position: absolute;
       bottom: 20px;
